@@ -31,7 +31,7 @@ var failing = branches[1];
 With [npm](https://www.npmjs.com) do:
 
 ```
-npm install rogain-parser
+npm install rogain-tree-utils
 ```
 
 ## License
