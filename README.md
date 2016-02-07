@@ -4,7 +4,7 @@ Utilities for manipulating Rogain trees.
 
 ## splitTree(trees, match)
 
-Splits an array of trees at matching element.
+Splits an array of trees at matching tree.
 
 ___trees___
 
