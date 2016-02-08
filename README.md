@@ -1,4 +1,4 @@
-# Tree Utilities
+# rogain-tree-utils
 
 Utilities for manipulating Rogain trees.
 
@@ -25,6 +25,8 @@ var branches = splitTree(tree.children, {
 var passing = branches[0];
 var failing = branches[1];
 ```
+
+__note__ will return an array of tree branches in the format `[ [ trees ], [ trees ] ]` even on a single tree result like, `[ [ tree ] ]`
 
 ## Install 
 

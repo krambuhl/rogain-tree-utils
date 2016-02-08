@@ -358,6 +358,16 @@
             ]
           }
         ]
+      },
+      {
+        "type": "tag",
+        "tagName": "div",
+        "children": [
+          {
+            "type": "textnode",
+            "value": "loremasa"
+          }
+        ]
       }
     ]
   }
