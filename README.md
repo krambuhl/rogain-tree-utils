@@ -18,7 +18,7 @@ Object.
 
 ```js
 var branches = splitTree(tree.children, {
-    type: 'component',
+    type: 'helper',
     name: 'Else'
 });
 
