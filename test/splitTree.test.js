@@ -1,47 +1,52 @@
 var test = require('tape');
-var templates = require('./fixtures/templates.json');
-var splitTree = require('../dist').splitTree;
+var splitTrees = require('../dist').splitTrees;
 
-var testTree = templates.Template.children;
+var treeList = [
+  { type: 'text', data: 'hello-world' },
+  { type: 'helper', name: 'NonEmpty' },
+  { type: 'tag', tagName: 'p' },
+  { type: 'tag', tagName: 'div' },
+  { type: 'component', name: 'Box' }
+]
 
-test('splitTree(tree)', function(t) {
+test('splitTrees(tree)', function(t) {
   t.plan(3);
   
-  var trees = splitTree(testTree);
+  var trees = splitTrees(treeList);
 
-  t.equal(trees.length, testTree.length);
-  t.equal(trees[0][0].type, testTree[0].type);
-  t.equal(trees[1][0].type, testTree[1].type);
+  t.equal(trees.length, treeList.length);
+  t.equal(trees[0][0].type, treeList[0].type);
+  t.equal(trees[1][0].type, treeList[1].type);
 });
 
-test('splitTree(tree, { }) :: middle', function(t) {
+test('splitTrees(tree, { }) :: middle', function(t) {
   t.plan(3);
 
-  var trees = splitTree(testTree, { type: 'helper', name: 'NonEmpty' });
+  var trees = splitTrees(treeList, { type: 'helper', name: 'NonEmpty' });
 
-  t.equal(trees[0][0].type, testTree[0].type);
-  t.equal(trees[1][0].type, testTree[2].type);
-  t.equal(trees[1][1].type, testTree[3].type);
+  t.equal(trees[0][0].type, treeList[0].type);
+  t.equal(trees[1][0].type, treeList[2].type);
+  t.equal(trees[1][1].type, treeList[3].type);
 });
 
-test('splitTree(tree, { }) :: first', function(t) {
+test('splitTrees(tree, { }) :: first', function(t) {
   t.plan(4);
 
-  var trees = splitTree(testTree, { type: 'tag', tagName: 'p' });
+  var trees = splitTrees(treeList, { type: 'text', data: 'hello-world' });
 
-  t.equal(trees[0].length, testTree.length - 1);
-  t.equal(trees[0][0].type, testTree[1].type);
-  t.equal(trees[0][1].type, testTree[2].type);
-  t.equal(trees[0][2].type, testTree[3].type);
+  t.equal(trees[0].length, treeList.length - 1);
+  t.equal(trees[0][0].type, treeList[1].type);
+  t.equal(trees[0][1].type, treeList[2].type);
+  t.equal(trees[0][2].type, treeList[3].type);
 });
 
-test('splitTree(tree, { }) :: last', function(t) {
+test('splitTrees(tree, { }) :: last', function(t) {
   t.plan(4);
 
-  var trees = splitTree(testTree, { type: 'tag', tagName: 'div' });
+  var trees = splitTrees(treeList, { type: 'component', name: 'Box' });
   
-  t.equal(trees[0].length, testTree.length - 1);
-  t.equal(trees[0][0].type, testTree[0].type);
-  t.equal(trees[0][1].type, testTree[1].type);
-  t.equal(trees[0][2].type, testTree[2].type);
+  t.equal(trees[0].length, treeList.length - 1);
+  t.equal(trees[0][0].type, treeList[0].type);
+  t.equal(trees[0][1].type, treeList[1].type);
+  t.equal(trees[0][2].type, treeList[2].type);
 });

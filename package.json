@@ -1,6 +1,6 @@
 {
   "name": "rogain-tree-utils",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "description": "Rogain tree utilities",
   "main": "dist/index.js",
   "scripts": {

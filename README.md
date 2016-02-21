@@ -1,12 +1,12 @@
 # rogain-tree-utils
 
-Utilities for manipulating Rogain trees.
+Utilities for manipulating and traversing Rogain trees.
 
-## splitTree(trees, match)
+## splitTree(treeList, match)
 
 Splits an array of trees at matching tree.
 
-___trees___
+___treeList___
 
 Array of trees.
 
@@ -27,6 +27,56 @@ var failing = branches[1];
 ```
 
 __note__ will return an array of tree branches in the format `[ [ trees ], [ trees ] ]` even on a single tree result like, `[ [ tree ] ]`
+
+
+## find(treeList, match)
+
+Finds the first tree matching the `match` object in `treeList`.
+
+___treeList___
+
+Array of trees.  Haystack of trees.
+
+___match___
+
+Object. Needle tree.
+
+```js
+var res = find(tree.children, { type: 'helper', name: 'Else' });
+```
+
+
+## findAll(treeList, match)
+
+Finds all trees matching the `match` object in `treeList`.
+
+___treeList___
+
+Array of trees.  Haystack of trees.
+
+___match___
+
+Object. Needle tree.
+
+```js
+var res = findAll(tree.children, { type: 'tag', tagName: 'a' });
+```
+
+
+## hasChildren(tree)
+
+Predicate, returns true when tree has children.
+
+___tree___
+
+Tree.
+
+```js
+if (hasChildren(tree)) {
+    // do children stuff
+}
+```
+
 
 ## Install 
 
